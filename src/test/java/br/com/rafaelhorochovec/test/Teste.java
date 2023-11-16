@@ -1,14 +1,16 @@
 package br.com.rafaelhorochovec.test;
 
 import io.restassured.RestAssured;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Teste {
-
+    
     @BeforeClass
     public void setup() {
-        RestAssured.baseURI = "https://reqres.in/api"; // Set the base URI
+        RestAssured.baseURI = "https://reqres.in/api";
     }
 
     @Test
@@ -16,8 +18,28 @@ public class Teste {
         RestAssured
                 .given()
                 .when()
-                .get("/users") // Send a GET request to /users/1
+                .get("/users")
                 .then()
-                .statusCode(200); // Verify that the response status code is 200 (OK)
+                .statusCode(200).log().body();
+    }
+
+    @Test
+    public void GETPage() {
+        RestAssured
+                .given()
+                .when()
+                .get("/users?page=2")
+                .then()
+                .statusCode(200).log().body();
+    }
+
+    @Test
+    public void GETUser() {
+        RestAssured
+                .given()
+                .when()
+                .get("/users/6")
+                .then()
+                .statusCode(200).log().body();
     }
 }
