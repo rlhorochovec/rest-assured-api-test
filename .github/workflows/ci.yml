@@ -15,7 +15,5 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Maven Install
-      run: mvn clean install
     - name: Run API Test
       run: mvn test
