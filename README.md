@@ -23,3 +23,6 @@ Para rodar os testes, rode o seguinte comando
 ```bash
   mvn test
 ```
+
+## Screenshots
+<img src="https://github.com/rlhorochovec/cypress-web-test/blob/develop/Screenshots/idea.png" width="400" /> <img src="https://github.com/rlhorochovec/cypress-web-test/blob/develop/Screenshots/terminal.png" width="400" /> <img src="https://github.com/rlhorochovec/cypress-web-test/blob/develop/Screenshots/ci.png" width="400" />
