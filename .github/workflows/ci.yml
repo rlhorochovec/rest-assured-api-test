@@ -2,7 +2,7 @@ name: rest-assured-api-test
 
 on:
   push:
-    branches: [ develop, "main" ]
+    branches: [ "develop", "main" ]
 
 jobs:
   build:
@@ -15,7 +15,5 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
     - name: Run API Test
       run: mvn test
