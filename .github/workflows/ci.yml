@@ -1,19 +1,29 @@
-name: rest-assured-api-test
+name: Testes de API com Rest Assured
 
 on:
   push:
-    branches: [ "develop", "main" ]
+    branches:
+      - develop
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
+    name: Execução do Rest Assured
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Run API Test
-      run: mvn test
+      # Verifica (faz checkout) o seu repositório no $GITHUB_WORKSPACE para o job poder acessá-lo
+      - name: Verificar repositório
+        uses: actions/checkout@v3
+
+      # Configura o ambiente Java JDK 17 (Eclipse Temurin) com cache do Maven habilitado
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # Executa os testes de API automatizados utilizando o Maven
+      - name: Executar testes de API
+        run: mvn test
